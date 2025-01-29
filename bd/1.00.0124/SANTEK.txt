@@ -1,0 +1,11 @@
+
+DATABASE 
+User:  sa
+Psw:  ntekca
+SOFTWARE
+user: z
+password: z
+
+
+
+
