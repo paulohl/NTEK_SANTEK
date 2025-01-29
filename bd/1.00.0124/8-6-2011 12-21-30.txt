@@ -1,0 +1,176 @@
+================= Logging started at 8/6/2011 12:21:30 ==================
+Created release folders
+AdminExecuteSequence table successfully built
+AdminUISequence table successfully built
+AdvtExecuteSequence table successfully built
+AdvtUISequence table successfully built
+InstallExecuteSequence table successfully built
+InstallUISequence table successfully built
+Directory table successfully built
+Feature table successfully built
+FeatureComponents table successfully built
+Component table successfully built
+Loading File table
+Building File table
+Merging modules...
+Merging Microsoft Component Category Manager Library: C:\Archivos de programa\Archivos comunes\Merge Modules\COMCAT.MSM
+Merging Microsoft Common Controls 3 ActiveX Control DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\COMCT332.MSM
+Merging CMDialog ActiveX Control DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\COMDLG32.MSM
+Merging Crystal Reports 8.5 - Report Designer Component: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReports85ReportDesignerComponent.Msm
+Merging Crystal Reports 8.5 - ActiveXViewer: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReports85ActiveXViewer.Msm
+Merging Crystal Reports 8.5 - Engine Access Core: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReports85EngineAccessCore.Msm
+Merging Crystal Reports - Active Data Driver: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReportsActiveDataDriver.Msm
+Merging Crystal Reports - ActiveXViewer Supplement: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReportsActiveXViewerSupplement.Msm
+Merging Crystal Reports - Charting: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReportsCharting.Msm
+Merging Crystal Reports - Imploder: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReportsImploder.Msm
+Merging Crystal Reports - Report Designer Supplement: C:\Archivos de programa\InstallShield\DevStudio 9\Modules\i386\CrystalReportsReportDesignerSupplement.Msm
+Merging DAO360: C:\Archivos de programa\InstallShield\DevStudio 9\Objects\DAO360.Msm
+Merging DCOM95: C:\Archivos de programa\InstallShield\DevStudio 9\Objects\DCOM95.Msm
+Merging MDAC 2.5 Sp3 (English): C:\Archivos de programa\InstallShield\DevStudio 9\Objects\MDAC25.Msm
+Merging MDAC 2.7 Sp1 (English): C:\Archivos de programa\InstallShield\DevStudio 9\Objects\MDAC27ENU.msm
+Merging MFCDLL Shared Library - Retail Version: C:\Archivos de programa\Archivos comunes\Merge Modules\MFC42.MSM
+Merging Microsoft ADO Data Control: C:\Archivos de programa\Archivos comunes\Merge Modules\MSADODC.MSM
+Merging Microsoft Data Binding Collection Object DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\MSBIND.MSM
+Merging Microsoft Common Controls 2 ActiveX Control DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\MSCOMCT2.MSM
+Merging Windows Common Controls ActiveX Control DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\MSCOMCTL.MSM
+Merging MSDatGrd.OCX: C:\Archivos de programa\Archivos comunes\Merge Modules\MSDATGRD.MSM
+Merging MSDatLst: C:\Archivos de programa\Archivos comunes\Merge Modules\MSDATLST.MSM
+Merging Microsoft Data Report Runtime DLL - Version 6.0: C:\Archivos de programa\Archivos comunes\Merge Modules\MSDBRPTR.MSM
+Merging Microsoft Data Environment Runtime: C:\Archivos de programa\Archivos comunes\Merge Modules\MSDERUN.MSM
+Merging MSFlexGrid: C:\Archivos de programa\Archivos comunes\Merge Modules\MSFLXGRD.MSM
+Merging Microsoft Hierarchical FlexGrid Control: C:\Archivos de programa\Archivos comunes\Merge Modules\MSHFLXGD.MSM
+Merging Microsoft Standard Data Formating Object DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\MSSTDFMT.MSM
+Merging Visual Basic Virtual Machine: C:\Archivos de programa\Archivos comunes\Merge Modules\MSVBVM60.MSM
+Merging Microsoft (R) C++ Runtime Library: C:\Archivos de programa\Archivos comunes\Merge Modules\MSVCP60.MSM
+Merging Microsoft (R) C Runtime Library: C:\Archivos de programa\Archivos comunes\Merge Modules\MSVCRT.MSM
+Merging Microsoft OLE 2.40  for Windows NT(TM) and Windows 95(TM) Operating Systems: C:\Archivos de programa\Archivos comunes\Merge Modules\OLEAUT32.MSM
+Merging TABCTL32 OLE Control DLL: C:\Archivos de programa\Archivos comunes\Merge Modules\TABCTL32.MSM
+File table successfully built
+Building MsiFileHash table
+MsiFileHash table successfully built
+Class table successfully built
+Extension table successfully built
+ODBCDataSource table successfully built
+ODBCDriver table successfully built
+ActionText table successfully built
+AppSearch table successfully built
+BindImage table successfully built
+CCPSearch table successfully built
+Condition table successfully built
+AppId table successfully built
+Property table successfully built
+BBControl table successfully built
+Billboard table successfully built
+Binary table successfully built
+CompLocator table successfully built
+Complus table successfully built
+ControlCondition table successfully built
+ControlEvent table successfully built
+CreateFolder table successfully built
+CustomAction table successfully built
+Error table successfully built
+DrLocator table successfully built
+DuplicateFile table successfully built
+Environment table successfully built
+EventMapping table successfully built
+FileSFPCatalog table successfully built
+Font table successfully built
+IniFile table successfully built
+IniLocator table successfully built
+IsolatedComponent table successfully built
+ISSelfReg table successfully built
+Verb table successfully built
+LaunchCondition table successfully built
+LockPermissions table successfully built
+MIME table successfully built
+MoveFile table successfully built
+MsiAssembly table successfully built
+MsiAssemblyName table successfully built
+MsiDigitalCertificate table successfully built
+MsiDigitalSignature table successfully built
+ODBCAttribute table successfully built
+ODBCSourceAttribute table successfully built
+ODBCTranslator table successfully built
+PatchPackage table successfully built
+ProgId table successfully built
+PublishComponent table successfully built
+Registry table successfully built
+RegLocator table successfully built
+RemoveFile table successfully built
+RemoveIniFile table successfully built
+RemoveRegistry table successfully built
+ReserveCost table successfully built
+SelfReg table successfully built
+ServiceControl table successfully built
+ServiceInstall table successfully built
+SFPCatalog table successfully built
+Shortcut table successfully built
+Signature table successfully built
+TextStyle table successfully built
+TypeLib table successfully built
+UIText table successfully built
+Upgrade table successfully built
+_Validation table successfully built
+Searching project for extract-at-build components...
+Extracting COM data from 3 component(s)
+New ProgId ComCtl3Satellite.Resources dynamically acquired for component Cmct3ES.dll
+New ProgId ubGridControl.ubGrid dynamically acquired for component ubGrid.ocx
+New ProgId WScript.Network dynamically acquired for component wshom.ocx
+New ProgId WScript.Network.1 dynamically acquired for component wshom.ocx
+New ProgId WScript.Shell dynamically acquired for component wshom.ocx
+New ProgId WScript.Shell.1 dynamically acquired for component wshom.ocx
+New Class {9C5CC5CB-D3BC-11D0-84A2-00DD01104159} dynamically acquired for component Cmct3ES.dll
+New Class {315E7A80-AF58-484A-855F-F86373B6238E} dynamically acquired for component ubGrid.ocx
+New Class {38FCCC49-1CA9-4C76-A49C-E2E37714715D} dynamically acquired for component ubGrid.ocx
+New Class {898C6086-6B37-41E3-AD8C-1AF2020C9C42} dynamically acquired for component ubGrid.ocx
+New Class {093FF999-1EA0-4079-9525-9614C3504B74} dynamically acquired for component wshom.ocx
+New Class {72C24DD5-D70A-438B-8A42-98424B88AFB8} dynamically acquired for component wshom.ocx
+New Class {F935DC22-1CF0-11D0-ADB9-00C04FD58A0B} dynamically acquired for component wshom.ocx
+New Class {F935DC26-1CF0-11D0-ADB9-00C04FD58A0B} dynamically acquired for component wshom.ocx
+New TypeLib {9C5CC5CC-D3BC-11D0-84A2-00DD01104159} dynamically acquired for component Cmct3ES.dll
+New TypeLib {13592B48-653C-491D-ACB1-C3140AA12F33} dynamically acquired for component ubGrid.ocx
+New TypeLib {F935DC20-1CF0-11D0-ADB9-00C04FD58A0B} dynamically acquired for component wshom.ocx
+New Registry Entries (4) dynamically acquired for component Cmct3ES.dll
+New Registry Entries (21) dynamically acquired for component ubGrid.ocx
+New Registry Entries (16) dynamically acquired for component wshom.ocx
+Validating Custom Action sequencing
+Dialog AdminChangeFolder for language Spanish built
+Dialog AdminNetworkLocation for language Spanish built
+Dialog AdminWelcome for language Spanish built
+Dialog CancelSetup for language Spanish built
+Dialog CustomSetup for language Spanish built
+Dialog CustomSetupTips for language Spanish built
+Dialog CustomerInformation for language Spanish built
+Dialog DatabaseFolder for language Spanish built
+Dialog DestinationFolder for language Spanish built
+Dialog DiskSpaceRequirements for language Spanish built
+Dialog FilesInUse for language Spanish built
+Dialog InstallChangeFolder for language Spanish built
+Dialog InstallWelcome for language Spanish built
+Dialog LicenseAgreement for language Spanish built
+Dialog MaintenanceType for language Spanish built
+Dialog MaintenanceWelcome for language Spanish built
+Dialog OutOfSpace for language Spanish built
+Dialog PatchWelcome for language Spanish built
+Dialog ReadyToInstall for language Spanish built
+Dialog ReadyToRemove for language Spanish built
+Dialog SetupCompleteError for language Spanish built
+Dialog SetupCompleteSuccess for language Spanish built
+Dialog SetupError for language Spanish built
+Dialog SetupInitialization for language Spanish built
+Dialog SetupInterrupted for language Spanish built
+Dialog SetupProgress for language Spanish built
+Dialog SetupResume for language Spanish built
+Dialog SetupType for language Spanish built
+Dialog SplashBitmap for language Spanish built
+Resolving strings...
+Language Spanish built
+ISDEV : warning -5061: The filename "C:\Programacion\SANTEK\instalador\SANTEK2\Product Configuration 1\Release 1\DiskImages\DISK1\System32\IMPLODE.DLL" already exists. Use the component's Source Location property to prevent this error.
+Files built
+Media table successfully built
+Performing Upgrading and Patching Validation
+Setup.exe created
+Product Configuration 1\Release 1 - 0 error(s), 1 warning(s)
+================= Logging stopped at 8/6/2011 12:22:30 ==================
+Log file has been created: <file:C:\Programacion\SANTEK\instalador\SANTEK2\Product Configuration 1\Release 1\LogFiles\8-6-2011 12-21-30.txt>
+
