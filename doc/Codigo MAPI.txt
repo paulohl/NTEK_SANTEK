@@ -1,0 +1,14 @@
+Tienes que usar los controles MAPIMessages y MAPISession.
+
+Establecer sus propiedades en diseño o ejecucion
+
+MAPISession.SignOn
+MAPIMessages.SessionID = MAPISession.SessionID
+MAPIMessages.Compose
+MAPIMessages.RecipAddress = "direccion de correo"
+MAPIMessages.MsgSubject = "ASUNTO"
+MAPIMessages.MsgNoteText = "MENSAJE"
+MAPIMessages.AttachmentPathName = "F:\produccion\hoja2500.doc"
+MAPIMessages.Send
+MAPISession.SignOff
+
