@@ -1,0 +1,188 @@
+cuando es pago
+
+deuda ++
+pagos ++
+saldo ==
+
+Ejemplo:
+
+deuda = 0    Deuda = 20 
+pagos = 100  Pagos = 120
+saldo = -100 Saldo = -100
+Otro Ejemplo: para un  monto de bs25 ( solo se descuenta productos <> al pvc, el cual cuesta bs15) 
+deuda = 0    Deuda = 10        Despues de impreso Deuda =  25 (10 + 15)
+pagos = 0    Pagos = 10                           Pagos =  25 (10+15)
+saldo = 0    Saldo = 0                            Saldo = 0   (deuda - pagos) o sea, (25-25)
+
+
+
+
+
+
+Cuando es pago por adelantado
+
+Deuda ++
+Pagos ==
+Saldo -- (el saldo debe estar en negativo, Ej. -100 y si se decrementa será un valor menor a cien, ej. -100 + 15=-85)
+
+Ejemplo: 
+deuda= 0    Deuda=   0         DESPUES DE IMPRESO deuda =  20
+pagos=100   Pagos= 100                            Pagos = 100
+saldo=-100  Saldo= 100                            Saldo = -80
+
+Otro Ejemplo: para un  monto de bs25 ( solo se descuenta productos <> al pvc, el cual cuesta bs15) 
+deuda =    0    Deuda =   10       Despues de impreso Deuda =  25 (10 + 15)
+pagos =  100    Pagos =  100                          Pagos = 115 (100+15)
+saldo = -100    Saldo = -100                          Saldo =  75 (deuda - pagos) o sea, (25-100)
+
+
+SI NO SE ENTREGAN TODOS LOS PRODUCTOS SELECCIONADOS
+Ejemplo:   BS20 SE SELECCIONÓ PORTACARNET Y CINTA PERO NO SE ENTREGARON (TOTAL 10) EL PVC CUESTA 10
+deuda= 0    Deuda=   0          DESPUES DE IMPRESO deuda =  20  deuda + productos (0 + 20)
+pagos=100   Pagos= 100                             Pagos = 100 (nada que hacer porque por adelantado)
+saldo=-100  Saldo= 100                             Saldo = -80 Saldo + productos (100 - 20)
+
+
+
+
+
+
+(CUANDO FALTA AUTORIZACION O FALTA FOTO O MODIFICACION DE DATOS) + PAGO
+ENTREGADOS NO
+
+deuda ++
+pagos ++
+saldo ==
+
+
+(CUANDO FALTA AUTORIZACION O FALTA FOTO O MODIFICACION DE DATOS) + PAGO POR DELANTADO
+
+
+Deuda ++
+Pagos ==
+Saldo -- (el saldo debe estar en negativo, Ej. -100 y si se decrementa será un valor menor a cien, ej. -100 + 15=-85)
+
+
+(CUANDO FALTA AUTORIZACION O FALTA FOTO O MODIFICACION DE DATOS) SIN SELECCIONAR NI PAGO O PAGO POR ADELANTADO
+
+deuda ==
+pagos ==
+saldo ==
+
+
+
+si en la tabla diario el campo "Pago" = S no hacer movimientos en el estado de cuenta del cliente a Exepcion del PVC
+
+SI FALTA PAGO
+
+deuda = 0       se genera un cargo 20 pero no ha pagado (Falta Pago) Deuda = 20      despues de impreso Deuda = 20
+Pagos = 0                                                            Pagos =  0                         Pagos = 20 
+saldo = 0                                                            Saldo = 20                          Saldo=0
+
+
+
+
+
+CREATE TRIGGER [TRG_000040-1] ON [000040-1] 
+FOR UPDATE AS 
+BEGIN 
+  declare @CodigoProducto as char(20) 
+  declare @PrecioProducto as float 
+  declare @IDPersona as integer 
+  declare @CodigoPVC as char(20)
+  --para diario
+  Declare @Fecha datetime
+  Declare @Cliente int
+  Declare @SubCliente int
+  Declare @Pago char(1)
+  Declare @Monto Float
+  Declare @Localizador char(20)
+
+ --para diraiodetalle
+  Declare @Precio float
+  Declare @Cantidad int
+  Declare @Subtotal float
+  Declare @Entregado char(1)
+ Declare @Saldo float
+
+ Declare @Cedula Varchar(20)
+
+  if update(CONTADOR) 
+  begin 
+    INSERT INTO [H000040-1] SELECT * FROM DELETED 
+    set @IDPersona = (SELECT ID FROM DELETED) 
+    set @Cedula = (SELECT CEDULA FROM DELETED) 
+    set @Fecha = (SELECT Creacion FROM DELETED) 
+    set @CodigoProducto = '' 
+    set @PrecioProducto = 0.00 
+    set @CodigoPVC = (select codigoproductopvc from opciones) 
+
+    																						--AAAA/MM/DD
+    Declare RegDiario cursor  For SELECT Localizador,Cliente,SubCliente,Pago,Monto from Diario where idcarnet=@IDPersona and cedula=@CEDULA AND cliente=000040 and Fecha=CONVERT(CHAR(10), @Fecha, 111) and Impreso = 0
+       OPEN RegDiario
+       FETCH NEXT FROM RegDiario
+       Into @Localizador,@Cliente,@SubCliente,@Pago,@Monto
+       print @IDPersona
+       Print @Cedula
+       PRint @Fecha
+
+    Declare RegDiarioDetalle cursor For Select CodigoProducto,Cantidad,Precio,Subtotal,Entregado from DiarioDetalle where Localizador=@Localizador --- AND CodigoProducto=@codigoProducto
+       OPEN RegDiarioDetalle
+       FETCH NEXT FROM RegDiarioDetalle
+       Into @CodigoProducto, @Cantidad,@Precio,@SubTotal,@Entregado
+
+
+   if  @Localizador <> ''      And rtrim(ltrim(@CodigoPVC)) <> '' 
+    begin 
+      Set @PrecioProducto = (Select Precio From PreciosEspeciales Where Cliente = 000040 And SubCliente = 0 And CodigoProducto = @CodigoProducto)
+      if @PrecioProducto is null 
+      begin 
+        Set @PrecioProducto = (Select Precio From Productos Where Codigo = @CodigoProducto) 
+      end 
+     set @Saldo = (Select Saldo from Clientes where codigo=000040)       
+
+WHILE @@FETCH_STATUS = 0
+   BEGIN
+    
+      IF @PAGO='N' OR @CODIGOPRODUCTO = @CODIGOPVC
+        BEGIN
+           if @Saldo >= 0
+              Begin
+                  Update Clientes set  Pagos = Pagos +  (@PrecioProducto * @Cantidad) , Deuda = deuda + (@PrecioProducto * @Cantidad)  where Codigo = 000040  --
+                  Update Clientes set  Saldo = Deuda - Pagos  where Codigo = 000040 
+              End
+           Else
+              Begin																	-- , CEdulaAuto1= @CEdula, NombreAuto1 =CONVERT(CHAR(10), @Fecha, 111), CedulaAuto2=@Localizador
+                   Update Clientes set  Saldo = Saldo + (@PrecioProducto * @Cantidad) , Deuda = deuda + (@PrecioProducto * @Cantidad) where Codigo = 000040      --, Deuda = Deuda + (@PrecioProducto * @Cantidad) 
+              End
+               -- Monto=Monto - @PrecioProducto
+
+  
+          if @Entregado = 'N'
+           Begin 
+               Update Productos set Existencia = Existencia - 1 where Codigo=@CodigoProducto   
+           End     
+           Update Diario Set Pago='S' , impreso=1 where idCarnet=@IdPersona and Localizador=@Localizador
+           Update DiarioDetalle Set Entregado='S' where Localizador=@Localizador and CodigoProducto=@CodigoProducto
+
+          FETCH NEXT FROM RegDiarioDetalle
+          Into @CodigoProducto,@Cantidad,@Precio,@SubTotal,@Entregado
+        
+        END --DEL PRIMER IF
+   END  --DEL WHILE
+
+      
+      --update Productos set existencia = existencia - 1 where Codigo = @CodProducto 
+      --update subclientes set deuda = deuda + @PrecioProducto where cliente = 000040 --and id = 0 
+      --update subclientes set saldo = pagos - deuda           where cliente = 000040 --and id = 0 
+      --insert into [EventosC5] (procesado,idtabla,tabla) values ('N',@IDPersona,'000040-1')
+    CLOSE REGDIARIO
+    CLOSE REGDIARIODETALLE    
+    deallocate RegDiario
+    deallocate RegDiarioDetalle
+    END -- DEL IF DEL LOCALIZADOR Y EL CODIGOPRODUCTO
+  end 
+END
+
+
+
