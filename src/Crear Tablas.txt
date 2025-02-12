@@ -1,0 +1,44 @@
+CERAR TABLA DE CLIENTE
+"CREATE TABLE [000064-1] (ID INT NOT NULL IDENTITY(1,1), CEDULA CHAR(20) ,NOMBRE CHAR(50) ,CARGO CHAR(50) ,VENCE CHAR(20) ,FOTO CHAR(20) ,TIENE_FOTO CHAR(1) ,MARCA CHAR(1) ,FECHA DATETIME ,CONTADOR INTEGER ,CREACION DATETIME , PRIMARY KEY(ID))"
+
+CREAR TABLA HISTORICO CLIENTE
+"CREATE TABLE [H000064-1] (ID INT NOT NULL, CEDULA CHAR(20) ,NOMBRE CHAR(50) ,CARGO CHAR(50) ,VENCE CHAR(20) ,FOTO CHAR(20) ,TIENE_FOTO CHAR(1) ,MARCA CHAR(1) ,FECHA DATETIME ,CONTADOR INTEGER ,CREACION DATETIME  )"
+
+
+CREAR TRIGER PARA LA TABLA DEL CLIENTE
+
+CREATE TRIGGER [TRG_000064-1] ON [000064-1] 
+FOR UPDATE AS 
+BEGIN 
+  declare @CodProducto as char(20) 
+  declare @PrecioProducto as float 
+  declare @IDPersona as integer 
+  --INSERT INTO [H000064-1] SELECT * FROM DELETED 
+  if update(CONTADOR) 
+  begin 
+    INSERT INTO [H000064-1] SELECT * FROM DELETED 
+    set @IDPersona = (SELECT ID FROM DELETED) 
+    set @CodProducto = '' 
+    set @PrecioProducto = 0.00 
+    set @CodProducto = (select codigoproductopvc from opciones) 
+    if rtrim(ltrim(@CodProducto)) <> '' 
+    begin 
+      Set @PrecioProducto = (Select Precio From PreciosEspeciales Where Cliente = 000064 And SubCliente = 0 And CodigoProducto = @CodProducto)
+      if @PrecioProducto is null 
+      begin 
+        Set @PrecioProducto = (Select Precio From Productos Where Codigo = @CodProducto) 
+      end 
+      update Productos set existencia = existencia - 1 where Codigo = @CodProducto 
+      update clientes set deuda = deuda + @PrecioProducto where codigo = 000064 
+      update clientes set saldo = deuda - pagos where codigo = 000064 
+      insert into [EventosC5] (procesado,idtabla,tabla) values ('N',@IDPersona,'000064-1')
+    end 
+  end 
+END
+
+
+
+INSERTAR EL CLIENTE EN LA TABLA PERSONAS
+
+INSERT INTO Personas (cliente,subcliente,tabla,creacion) VALUES (000064,0,'000064-1','2010-03-24 09:25:51')
+

@@ -1,0 +1,34 @@
+Cretae Trigger TggActualizaExistencias
+On compra
+For Insert
+as
+declare @CntComprada int  --//suponiendo q tu compo de la cantidad --//compra se este
+declare @TipoProd nvarchar(50) --//el tipo de producto comprado
+ 
+select @CntComprada=(Inserted.Cnt) , @TipoProd=(Inserted.Product) from Inserted
+ 
+--// actualizamos la tabla existencias
+ 
+Update existencias
+set Cant=Cant + @CntComprada
+where mailto:DescripcionDelproducto=@TipoProd - DescripcionDelproducto = @TipoProd
+ 
+ 
+/*
+Leyendas:
+@CntComprada=es una variable q representa la cantidad de productos comprodos.
+ 
+@TipoProd= es el tipo de producto o la descripcion del producto q se compro
+ 
+Inserted.Cnt=el campo "Cnt" va a ser el campo donde guardas la cantidad comprada en tu tabla compras cada vez q haces una insercion se crea la tabla temporal Inserted.
+ 
+Inserted.Product= el campo "Product" e el  tipo de producto o la descripcion del producto  de tu tabla compras.
+ 
+Inserted= es la tabla temporal q crea el SQL cada vez q insertas un registro, al eliminar un registro tambien se crea una tabla temporal q es deleted.
+ 
+existencias= es tu tabla de existencias pues.
+ 
+set Cant=Cant + @CntComprada= aqui le dices al sql q actualize el campo cantidad de tu tabal existencias q va a ser la cantidad actual + la variable asignada en la tabla inserted. osea si tu cantidad era 10 y lo comprado son 2 sera asi 10=10+2 =12
+ 
+where mailto:DescripcionDelproducto=@TipoProd - DescripcionDelproducto = @TipoProd = esta linea indica q era la actualizacion en las filas q sean igual al producto comprado
+*/
